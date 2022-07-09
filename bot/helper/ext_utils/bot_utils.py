@@ -123,7 +123,7 @@ def get_readable_message():
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
             msg += f"<b>╭─🗂𝗙𝗶𝗹𝗲𝗡𝗮𝗺𝗲 :</b> <code>{escape(str(download.name()))}</code>"
-            msg += f"\n<b>├─🔥⇆ 𝙐𝙋𝘿𝘼𝙏𝙀 𝙄𝙉𝙁𝙊 ⇢ 🧐 | 👇:</b> <i>{download.status()}</i>"
+            msg += f"\n<b>├─🔥⇆ 𝙐𝙋𝘿𝘼𝙏𝙀 𝙄𝙉𝙁𝙊 ⇢ 🧐 </b> <i>{download.status()}</i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -137,9 +137,9 @@ def get_readable_message():
                     msg += f"\n<b>├─📤 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 ⇢ </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 else:
                     msg += f"\n<b>├─📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝 ⇢ </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
-                msg += f"\n<b>├─🚀 𝐒𝐩𝐞𝐞𝐝 ⇢ </b> {download.speed()} | <b>☀️ 𝗘𝗧𝗔 ⇢ </b> {download.eta()}"
+                msg += f"\n<b>├─🚀 𝐒𝐩𝐞𝐞𝐝 ⇢ </b> {download.speed()} | <b>☀️ 𝗘𝗧𝗔 </b> {download.eta()}"
                 
-                msg += f"\n<b>├─🕰 𝐄𝐬𝐭𝐢𝐦𝐚𝐭𝐞𝐝 𝐓𝐢𝐦𝐞 ⏳ ⇢ </b> <code>{download.eta()}⌛</code>"
+                msg += f"\n<b>├─🕰 𝐄𝐬𝐭𝐢𝐦𝐚𝐭𝐞𝐝 𝐓𝐢𝐦𝐞 ⇢ </b> <code>{download.eta()}⌛</code>"
                 msg += f'\n<b>├─👨‍🦱 𝐔𝐬𝐞𝐫 ⇢ </b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
                 msg += f"\n<b>├─😎 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 | </b> <b>{download.message.from_user.first_name}</b>\n<b>⌈➳ ⚠️ USER - ID ⪡」👉 </b><code>/warn {download.message.from_user.id}</code>"
 
