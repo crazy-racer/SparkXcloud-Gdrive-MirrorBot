@@ -21,17 +21,17 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "⌈➳ ⭐ ⇅𝚄𝚙𝚕𝚘𝚊𝚍𝚒𝚗𝚐.....ꘉ....📤 ⏫"
-    STATUS_DOWNLOADING = "⌈➳ 🌟 ⇅𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚒𝚗𝚐.....ꘉ....📥 ⏬"
-    STATUS_CLONING = "🤶 Cloning..!. ♻️ "
-    STATUS_WAITING = "😡 𝚆𝚊𝚒𝚝𝚒𝚗𝚐...📝 "
-    STATUS_FAILED = "🧐 Failed 🚫.. Cleaning..🌀"
-    STATUS_PAUSE = "🤷‍♀️ Paused...⏸ "
-    STATUS_ARCHIVING = "💝 Archiving...🔐 "
-    STATUS_EXTRACTING = "💔 Extracting...📂"
-    STATUS_SPLITTING = "💞 Splitting...✂️"
-    STATUS_CHECKING = "Cʜᴇᴄᴋɪɴɢᴜᴘ...📝"
-    STATUS_SEEDING = "Sᴇᴇᴅɪɴɢ...🌧"
+    STATUS_UPLOADING = "├─⭐ ⇅𝐔𝐩𝐥𝐨𝐚𝐝𝐢𝐧𝐠...📥"
+    STATUS_DOWNLOADING = "├─🌟 ⇅𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐢𝐧𝐠...📥"
+    STATUS_CLONING = "🤶 𝐂𝐥𝐨𝐧𝐢𝐧𝐠..!. ♻️ "
+    STATUS_WAITING = "😡 𝐖𝐚𝐢𝐭𝐢𝐧𝐠...📝 "
+    STATUS_FAILED = "🧐 𝐅𝐚𝐢𝐥𝐞𝐝..🚫 𝐂𝐥𝐞𝐚𝐧𝐢𝐧𝐠..🌀"
+    STATUS_PAUSE = "🤷‍♀️ 𝐏𝐚𝐮𝐬𝐞𝐝...⏸ "
+    STATUS_ARCHIVING = "𝐀𝐫𝐜𝐡𝐢𝐯𝐢𝐧𝐠...🔐 "
+    STATUS_EXTRACTING = "𝐄𝐱𝐭𝐫𝐚𝐜𝐭𝐢𝐧𝐠...📂"
+    STATUS_SPLITTING = "𝐒𝐩𝐥𝐢𝐭𝐭𝐢𝐧𝐠...✂️"
+    STATUS_CHECKING = "𝐂𝐡𝐞𝐜𝐤𝐢𝐧𝐠 𝐅𝐢𝐥𝐞...📝📝"
+    STATUS_SEEDING = "𝐒𝐞𝐞𝐝𝐢𝐧𝐠...🌧"
 
 SIZE_UNITS = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -106,14 +106,14 @@ def get_progress_bar_string(status):
     p = 0 if total == 0 else round(completed * 100 / total)
     p = min(max(p, 0), 100)
     cFull = p // 8
-    p_str = '▰' * cFull
-    p_str += '▱' * (12 - cFull)
+    p_str = '✦' * cFull
+    p_str += '✧' * (12 - cFull)
     p_str = f"[{p_str}]"
     return p_str
 
 def get_readable_message():
     with download_dict_lock:
-        msg = ""
+        msg = "✥═══ @𝐘𝐚𝐦𝐫𝐚𝐚𝐣𝟎𝟎𝟕 ═══✥"
         if STATUS_LIMIT is not None:
             tasks = len(download_dict)
             global pages
@@ -122,8 +122,8 @@ def get_readable_message():
                 globals()['COUNT'] -= STATUS_LIMIT
                 globals()['PAGE_NO'] -= 1
         for index, download in enumerate(list(download_dict.values())[COUNT:], start=1):
-            msg += f"<b>⌈➳ 🗃 𝙵𝙸𝙻𝙴𝙽𝙰𝙼𝙴 💌 ⪡」:</b> <code>{escape(str(download.name()))}</code>"
-            msg += f"\n<b>⌈➳ 🔥⇆ 𝚄𝙿𝙳𝙰𝚃𝙴 𝙸𝙽𝙵𝙾 🧐 ⪡」:⌜↬:</b> <i>{download.status()}</i>"
+            msg += f"<b>╭─🗂𝗙𝗶𝗹𝗲𝗡𝗮𝗺𝗲 :</b> <code>{escape(str(download.name()))}</code>"
+            msg += f"\n<b>├─🔥⇆ 𝙐𝙋𝘿𝘼𝙏𝙀 𝙄𝙉𝙁𝙊 ⇢ 🧐 | 👇:</b> <i>{download.status()}</i>"
             if download.status() not in [
                 MirrorStatus.STATUS_ARCHIVING,
                 MirrorStatus.STATUS_EXTRACTING,
@@ -132,43 +132,44 @@ def get_readable_message():
             ]:
                 msg += f"\n{get_progress_bar_string(download)} {download.progress()}"
                 if download.status() == MirrorStatus.STATUS_CLONING:
-                    msg += f"\n<b>🚦Cʟᴏɴᴇᴅ :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>├─♻️ 𝐂𝐥𝐨𝐧𝐞𝐝 ⇢ </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 elif download.status() == MirrorStatus.STATUS_UPLOADING:
-                    msg += f"\n<b>⌈➳ 👰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚍... 💃=> :</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                    msg += f"\n<b>├─📤 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝 ⇢ </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
                 else:
-                    msg += f"\n<b>⌈➳ 👰 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 💃 |:</b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
-                msg += f"\n<b>⌈➳ 📯 𝚂𝙿𝙴𝙴𝙳 ⚡ ⪡」:</b> {download.speed()} | <b>ETA:</b> {download.eta()}"
+                    msg += f"\n<b>├─📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝 ⇢ </b> {get_readable_file_size(download.processed_bytes())} of {download.size()}"
+                msg += f"\n<b>├─🚀 𝐒𝐩𝐞𝐞𝐝 ⇢ </b> {download.speed()} | <b>☀️ 𝗘𝗧𝗔 ⇢ </b> {download.eta()}"
                 
-                msg += f"\n<b>⌈➳ 🕰 𝙴𝚂𝚃𝙸𝙼𝙰𝚃𝙴𝙳 𝚃𝙸𝙼𝙴 ⏳ : </b> <code>{download.eta()}⌛</code>"
-                msg += f"\n<b>⌈➳ 😎 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍𝚎𝚛 | </b> <b>{download.message.from_user.first_name}</b>\n<b>⌈➳ ⚠️ USER - ID ⪡」👉 </b><code>/warn {download.message.from_user.id}</code>"
+                msg += f"\n<b>├─🕰 𝐄𝐬𝐭𝐢𝐦𝐚𝐭𝐞𝐝 𝐓𝐢𝐦𝐞 ⏳ ⇢ </b> <code>{download.eta()}⌛</code>"
+                msg += f'\n<b>├─👨‍🦱 𝐔𝐬𝐞𝐫 ⇢ </b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
+                msg += f"\n<b>├─😎 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 | </b> <b>{download.message.from_user.first_name}</b>\n<b>⌈➳ ⚠️ USER - ID ⪡」👉 </b><code>/warn {download.message.from_user.id}</code>"
 
                 try:
-                    msg += f"\n<b>⌈➳📡 𝚃𝙾𝚁𝚁𝙴𝙽𝚃 𝙸𝙽𝙵𝙾 ⚓️ ⇒\n⌈➳ 𝚂𝙴𝙴𝙳𝙴𝚁𝚂 🌹: </b> <code>{download.aria_download().num_seeders}</code>" \
-                           f" | <b> 𝙿𝙴𝙴𝚁𝚂 🥀 : </b> <code>{download.aria_download().connections}</code>\n<b>⌈➳ 💎 𝙼𝙸𝚁𝚁𝙾𝚁 𝙲𝙻𝙸𝙴𝙽𝚃 |</b> aria2c ◷"           
+                    msg += f"\n<b>├─📡 𝐓𝐨𝐫𝐫𝐞𝐧𝐭 𝐢𝐧𝐟𝐨 ⚓️ ⇒\n├─𝐒𝐞𝐞𝐝𝐞𝐫𝐬 ⇢🌹 </b> <code>{download.aria_download().num_seeders}</code>" \
+                           f" | <b> ✳️ 𝐏𝐞𝐞𝐫𝐬 ⇢ 🥀 : </b> <code>{download.aria_download().connections}</code>\n<b>├─💎 𝐌𝐢𝐫𝐫𝐨𝐫 𝐂𝐥𝐢𝐞𝐧𝐭 |</b> aria2c ◷ "           
                 except:
                     pass
                 try:
-                    msg += f"\n<b>⌈➳ 🤑 𝚂𝙴𝙴𝙳𝙴𝚁𝚂 :</b> {download.torrent_info().num_seeds}" \
-                           f" | <b>🧲 𝙻𝙴𝙴𝙲𝙷𝙴𝚁𝚂:</b> {download.torrent_info().num_leechs}"
+                    msg += f"\n<b>⌈➳ 🤑 𝐒𝐞𝐞𝐝𝐞𝐫𝐬 :</b> {download.torrent_info().num_seeds}" \
+                           f" | <b>🧲 𝐋𝐞𝐞𝐜𝐡𝐞𝐫𝐬:</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n<b>⌈➳ 🤷‍♀️ 𝚃𝙾 𝙲𝙰𝙽𝙲𝙴𝙻 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 🤦‍♀️ |</b> \n<b>=> 𝚃𝙾𝙺𝙴𝙽 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>⌈➳ 🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
-                msg += f"\n<b>📦 Sɪᴢᴇ : </b>{download.size()}"
-                msg += f"\n<b>⌈➳ 📯 𝚂𝙿𝙴𝙴𝙳 ⚡ ⪡」: </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
-                msg += f" | <b>⌈➳ 👰 𝚄𝚙𝚕𝚘𝚊𝚍𝚎𝚍... 💃=> : </b>{get_readable_file_size(download.torrent_info().uploaded)}"
+                msg += f"\n<b>📦 𝐒𝐢𝐳𝐞 : </b>{download.size()}"
+                msg += f"\n<b>⌈➳ 📯 𝐒𝐩𝐞𝐞𝐝𝐞 ⚡ ⇒ : </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
+                msg += f" | <b>⌈➳ 👰 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝... 💃=> : </b>{get_readable_file_size(download.torrent_info().uploaded)}"
                 msg += f"\n<b>Ratio: </b>{round(download.torrent_info().ratio, 3)}"
-                msg += f" | <b>⏲️ Eᴛᴀ : </b>{get_readable_time(download.torrent_info().seeding_time)}"
-                msg += f"\n<b>⌈➳ 🤷‍♀️ 𝚃𝙾 𝙲𝙰𝙽𝙲𝙴𝙻 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 🤦‍♀️ |</b> \n<b>=> 𝚃𝙾𝙺𝙴𝙽 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f" | <b>⏲️ 𝐄𝐓𝐀 : </b>{get_readable_time(download.torrent_info().seeding_time)}"
+                msg += f"\n<b>⌈➳ 🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             else:
-                msg += f"\n<b>📦 Sɪᴢᴇ : </b>{download.size()}"
+                msg += f"\n<b>📦 𝐒𝐢𝐳𝐞 : </b>{download.size()}"
             msg += "\n\n"
             if STATUS_LIMIT is not None and index == STATUS_LIMIT:
                 break
-        bmsg = f"<b>🖥️ Cᴘᴜ :</b> {cpu_percent()}% | <b>Fʀᴇᴇ:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
-        bmsg += f"\n<b>🎮 Rᴀᴍ :</b> {virtual_memory().percent}% | <b>Uᴘᴛɪᴍᴇ:</b> {get_readable_time(time() - botStartTime)}"
+        bmsg = f"<b>🖥️ 𝐂𝐏𝐔 :</b> {cpu_percent()}% | <b>𝐅𝐫𝐞𝐞:</b> {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}"
+        bmsg += f"\n<b>🎮 𝐑𝐀𝐌 :</b> {virtual_memory().percent}% | <b>𝐔𝐩𝐭𝐢𝐦𝐞:</b> {get_readable_time(time() - botStartTime)}"
         dlspeed_bytes = 0
         upspeed_bytes = 0
         for download in list(download_dict.values()):
