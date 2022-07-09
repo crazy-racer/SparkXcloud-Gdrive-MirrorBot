@@ -213,11 +213,11 @@ class MirrorListener:
                 if fmsg != '':
                     sendMessage(msg + fmsg, self.bot, self.message)
         else:
-            msg += f'\n\n<b>⌈➳ ♻ 𝚃𝚈𝙿𝙴 : </b>{typ}'
+            msg += f'\n\n<b>├─♻ 𝚃𝚈𝙿𝙴 : </b>{typ}'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
                 msg += f'\n<b>├─📚 𝐒𝐮𝐛𝐅𝐨𝐥𝐝𝐞𝐫𝐬 ⇢ </b>{folders}'
                 msg += f'\n<b>├─📂 𝐅𝐢𝐥𝐞𝐬 ⇢ </b>{files}'
-            msg += f'\n\n<b>╰─👤 𝗟𝗲𝗲𝗰𝗵𝗲𝗱 𝐁𝐲 ⇢ </b>{self.tag}'
+            msg += f'\n\n<b>╰─👤 𝐌𝐢𝐫𝐫𝐨𝐫 𝐛𝐲 ⇢ </b>{self.tag}'
             buttons = ButtonMaker()
             link = short_url(link)
             buttons.buildbutton("🌩 𝙳𝚁𝙸𝚅𝙴-𝙻𝙸𝙽𝙺 🌩", link)
