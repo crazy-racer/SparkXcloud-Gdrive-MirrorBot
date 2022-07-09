@@ -194,12 +194,12 @@ class MirrorListener:
     def onUploadComplete(self, link: str, size, files, folders, typ, name: str):
         if not self.isPrivate and INCOMPLETE_TASK_NOTIFIER and DB_URI is not None:
             DbManger().rm_complete_task(self.message.link)
-        msg = f"<b>⌈➳ 💌 𝙵𝙸𝙻𝙴𝙽𝙰𝙼𝙴 ♻ : </b><code>{escape(name)}</code>\n\n<b>Size: </b>{size}"
+        msg = f"<b>╭─📂 𝐅𝐢𝐥𝐞𝐧𝐚𝐦𝐞 ⇢ </b><code>{escape(name)}</code>\n\n<b>Size: </b>{size}"
         if self.isLeech:
-            msg += f'\n<b>⌈➳ 🗂 𝚃𝙾𝚃𝙰𝙻 𝙵𝙸𝙻𝙴𝚂 => : </b>{folders}'
+            msg += f'\n<b>├─🗂 𝐓𝐎𝐓𝐀𝐋 𝐅𝐈𝐋𝐄𝐒 ⇢ </b>{folders}'
             if typ != 0:
-                msg += f'\n<b>⌈➳ 🎲 𝙲𝙾𝚁𝚁𝚄𝙿𝚃𝙴𝙳 𝙵𝙸𝙻𝙴𝚂 : </b>{typ}'
-            msg += f'\n<b>⌈➳ ⚙️ 𝙲𝙲 : </b>{self.tag}\n\n'
+                msg += f'\n<b>├─🎲 𝐂𝐨𝐫𝐫𝐮𝐩𝐭𝐞𝐝 𝐅𝐢𝐥𝐞𝐬 ⇢ </b>{typ}'
+            msg += f'\n<b>├─👤 𝐌𝐢𝐫𝐫𝐨𝐫 𝐛𝐲 ⇢ </b>{self.tag}\n\n'
             if not files:
                 sendMessage(msg, self.bot, self.message)
             else:
@@ -215,9 +215,9 @@ class MirrorListener:
         else:
             msg += f'\n\n<b>⌈➳ ♻ 𝚃𝚈𝙿𝙴 : </b>{typ}'
             if ospath.isdir(f'{DOWNLOAD_DIR}{self.uid}/{name}'):
-                msg += f'\n<b>⌈➳ 📚 𝚂𝚄𝙱-𝙵𝙾𝙻𝙳𝙴𝚁𝚂 : </b>{folders}'
-                msg += f'\n<b>⌈➳ 📁 𝙵𝙸𝙻𝙴𝚂 : </b>{files}'
-            msg += f'\n\n<b>⌈➳ ⚙️ 𝙲𝙲 : </b>{self.tag}'
+                msg += f'\n<b>├─📚 𝐒𝐮𝐛𝐅𝐨𝐥𝐝𝐞𝐫𝐬 ⇢ </b>{folders}'
+                msg += f'\n<b>├─📂 𝐅𝐢𝐥𝐞𝐬 ⇢ </b>{files}'
+            msg += f'\n\n<b>╰─👤 𝗟𝗲𝗲𝗰𝗵𝗲𝗱 𝐁𝐲 ⇢ </b>{self.tag}'
             buttons = ButtonMaker()
             link = short_url(link)
             buttons.buildbutton("🌩 𝙳𝚁𝙸𝚅𝙴-𝙻𝙸𝙽𝙺 🌩", link)
