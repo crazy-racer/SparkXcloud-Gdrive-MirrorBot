@@ -141,11 +141,11 @@ def get_readable_message():
                 
                 msg += f"\n<b>├─🕰 𝐄𝐬𝐭𝐢𝐦𝐚𝐭𝐞𝐝 𝐓𝐢𝐦𝐞 ⇢ </b> <code>{download.eta()}⌛</code>"
                 msg += f'\n<b>├─👨‍🦱 𝐔𝐬𝐞𝐫 ⇢ </b> <a href="tg://user?id={download.message.from_user.id}">{download.message.from_user.first_name}</a> (<code>{download.message.from_user.id}</code>)'
-                msg += f"\n<b>├─😎 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 | </b> <b>{download.message.from_user.first_name}</b>\n<b>⌈➳ ⚠️ USER - ID ⪡」👉 </b><code>/warn {download.message.from_user.id}</code>"
+                msg += f"\n<b>├─😎 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐫 | </b> <b>{download.message.from_user.first_name}</b>\n<b>├─⚠️ USER - ID 👉 </b><code>/warn {download.message.from_user.id}</code>"
 
                 try:
                     msg += f"\n<b>├─📡 𝐓𝐨𝐫𝐫𝐞𝐧𝐭 𝐢𝐧𝐟𝐨 ⚓️ ⇒\n├─𝐒𝐞𝐞𝐝𝐞𝐫𝐬 ⇢🌹 </b> <code>{download.aria_download().num_seeders}</code>" \
-                           f" | <b> ✳️ 𝐏𝐞𝐞𝐫𝐬 ⇢ 🥀 : </b> <code>{download.aria_download().connections}</code>\n<b>├─💎 𝐌𝐢𝐫𝐫𝐨𝐫 𝐂𝐥𝐢𝐞𝐧𝐭 |</b> aria2c ◷ "           
+                           f" | <b> ✳️ 𝐏𝐞𝐞𝐫𝐬 ⇢ 🥀 : </b> <code>{download.aria_download().connections}</code>\n<b>├─💎 𝐌𝐢𝐫𝐫𝐨𝐫 𝐂𝐥𝐢𝐞𝐧𝐭 |</b> aria2c ◷ and qBittorrent ◷"           
                 except:
                     pass
                 try:
@@ -157,8 +157,8 @@ def get_readable_message():
                 msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>📦 𝐒𝐢𝐳𝐞 : </b>{download.size()}"
-                msg += f"\n<b>⌈➳ 📯 𝐒𝐩𝐞𝐞𝐝𝐞 ⚡ ⇒ : </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
-                msg += f" | <b>⌈➳ 👰 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝... 💃=> : </b>{get_readable_file_size(download.torrent_info().uploaded)}"
+                msg += f"\n<b>├─📯 𝐒𝐩𝐞𝐞𝐝𝐞 ⚡ ⇒ : </b>{get_readable_file_size(download.torrent_info().upspeed)}/s"
+                msg += f" | <b>├─👰 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝... 💃=> : </b>{get_readable_file_size(download.torrent_info().uploaded)}"
                 msg += f"\n<b>Ratio: </b>{round(download.torrent_info().ratio, 3)}"
                 msg += f" | <b>⏲️ 𝐄𝐓𝐀 : </b>{get_readable_time(download.torrent_info().seeding_time)}"
                 msg += f"\n<b>⌈➳ 🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
