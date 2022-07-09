@@ -15,17 +15,18 @@ def speedtest(update, context):
     test.results.share()
     result = test.results.dict()
     string_speed = f'''
-<b>𝐒𝐞𝐫𝐯𝐞𝐫: 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐭𝐨 𝐒𝐩𝐚𝐫𝐤𝐱 𝐃𝐚𝐭𝐚 𝐍𝐞𝐭𝐰𝐨𝐫𝐤𝐢𝐧𝐠 𝐏𝐫𝐨𝐭𝐨𝐜𝐨𝐥</b>
-<b>𝐍𝐚𝐦𝐞:</b> <code>{result['server']['name']}</code>
-<b>𝐂𝐨𝐮𝐧𝐭𝐫𝐲:</b> <code>{result['server']['country']}, {result['server']['cc']}</code>
-<b>𝐒𝐩𝐨𝐧𝐬𝐨𝐫:</b> <code>{result['server']['sponsor']}</code>
-<b>𝐈𝐒𝐏:</b> <code>{result['client']['isp']}</code>
+<b>╭───🛰️𝐒𝐞𝐫𝐯𝐞𝐫: 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐭𝐨 𝐌𝐢𝐫𝐫𝐨𝐫∆𝐜𝐥𝐨𝐮𝐝 𝐃𝐚𝐭𝐚 𝐍𝐞𝐭𝐰𝐨𝐫𝐤𝐢𝐧𝐠 𝐏𝐫𝐨𝐭𝐨𝐜𝐨𝐥</b>
+<b>├ 🖥️ 𝐍𝐚𝐦𝐞 ⇢ </b> <code>{result['server']['name']}</code>
+<b>├ 🌍 𝐂𝐨𝐮𝐧𝐭𝐫𝐲 ⇢ </b> <code>{result['server']['country']}, {result['server']['cc']}</code>
+<b>├ 🪂 𝐒𝐩𝐨𝐧𝐬𝐨𝐫 ⇢ </b> <code>{result['server']['sponsor']}</code>
+<b>├ 🤖 𝐈𝐒𝐏 ⇢ </b> <code>{result['client']['isp']}</code>
 
-<b>𝐒𝐩𝐞𝐞𝐝𝐓𝐞𝐬𝐭 𝐑𝐞𝐬𝐮𝐥𝐭𝐬</b>
-<b>𝐔𝐩𝐥𝐨𝐚𝐝:</b> <code>{speed_convert(result['upload'] / 8)}</code>
-<b>𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝:</b>  <code>{speed_convert(result['download'] / 8)}</code>
-<b>𝐏𝐢𝐧𝐠:</b> <code>{result['ping']} ms</code>
-<b>𝐈𝐒𝐏 𝐑𝐚𝐭𝐢𝐧𝐠:</b> <code>{result['client']['isprating']}</code>
+<b>├ 🎯 𝐒𝐩𝐞𝐞𝐝𝐓𝐞𝐬𝐭 𝐑𝐞𝐬𝐮𝐥𝐭𝐬 🎯</b>
+<b>├ 📤 𝐔𝐩𝐥𝐨𝐚𝐝 ⇢</b> <code>{speed_convert(result['upload'] / 8)}</code>
+<b>├ 📥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 ⇢</b>  <code>{speed_convert(result['download'] / 8)}</code>
+<b>├ ♻️ 𝐎𝐒 𝐔𝐏𝐓𝐈𝐌𝐄 ⇢</b> <code>{currentTime}</code>
+<b>├ 📊 𝐏𝐢𝐧𝐠 ⇢</b> <code>{result['ping']} ms</code>
+<b>╰──🔗 𝐈𝐒𝐏 𝐑𝐚𝐭𝐢𝐧𝐠 ⇢</b> <code>{result['client']['isprating']}</code>
 '''
     editMessage(string_speed, speed)
 
