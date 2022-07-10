@@ -72,10 +72,10 @@ class TelegraphHelper:
                     nxt_page += 1
             self.edit_page(
                 path = path[prev_page],
-                title = '𝐒𝐩𝐚𝐫𝐤𝐗𝐜𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐁𝐨𝐭 𝐒𝐞𝐚𝐫𝐜𝐡',
+                title = '𝐌𝐢𝐫𝐫𝐨𝐫∆𝐜𝐥𝐨𝐮𝐝-𝐆𝐝𝐫𝐢𝐯𝐞-𝐌𝐢𝐫𝐫𝐨𝐫𝐁𝐨𝐭 𝐒𝐞𝐚𝐫𝐜𝐡',
                 content=content
             )
         return
 
 
-telegraph=TelegraphHelper('SparkXcloud-Gdrive-MirrorBot', 'https://github.com/Spark-X-Cloud/SparkXcloud-Gdrive-MirrorBot')
+telegraph=TelegraphHelper('Mirror∆cloud-Gdrive-MirrorBot', 'https://www.github.com/crazy-racer/mirror-leech-telegram-bot')
