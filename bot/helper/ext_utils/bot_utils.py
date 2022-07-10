@@ -149,11 +149,11 @@ def get_readable_message():
                 except:
                     pass
                 try:
-                    msg += f"\n<b>⌈➳ 🤑 𝐒𝐞𝐞𝐝𝐞𝐫𝐬 :</b> {download.torrent_info().num_seeds}" \
+                    msg += f"\n<b>├─🤑 𝐒𝐞𝐞𝐝𝐞𝐫𝐬 :</b> {download.torrent_info().num_seeds}" \
                            f" | <b>🧲 𝐋𝐞𝐞𝐜𝐡𝐞𝐫𝐬:</b> {download.torrent_info().num_leechs}"
                 except:
                     pass
-                msg += f"\n<b>⌈➳ 🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>├─🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             elif download.status() == MirrorStatus.STATUS_SEEDING:
                 msg += f"\n<b>📦 𝐒𝐢𝐳𝐞 : </b>{download.size()}"
@@ -161,7 +161,7 @@ def get_readable_message():
                 msg += f" | <b>├─👰 𝐔𝐩𝐥𝐨𝐚𝐝𝐞𝐝... 💃=> : </b>{get_readable_file_size(download.torrent_info().uploaded)}"
                 msg += f"\n<b>Ratio: </b>{round(download.torrent_info().ratio, 3)}"
                 msg += f" | <b>⏲️ 𝐄𝐓𝐀 : </b>{get_readable_time(download.torrent_info().seeding_time)}"
-                msg += f"\n<b>⌈➳ 🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                msg += f"\n<b>├─🤷‍♀️ 𝐓𝐨 𝐂𝐚𝐧𝐜𝐞𝐥 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝 🤦‍♀️ |</b> \n<b>=> 𝐓𝐨𝐤𝐞𝐧 </b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += f"\n<b> ━━━━━━━━━━━━━━━━━━━━━━━━━━ </b>"
             else:
                 msg += f"\n<b>📦 𝐒𝐢𝐳𝐞 : </b>{download.size()}"
