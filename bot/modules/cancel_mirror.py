@@ -33,7 +33,8 @@ def cancel_mirror(update, context):
         return sendMessage(msg, context.bot, update.message)
 
     if OWNER_ID != user_id and dl.message.from_user.id != user_id and user_id not in SUDO_USERS:
-        return sendMessage("This task is not for you!", context.bot, update.message)
+        return sendMessage("
+𝐓𝐡𝐢𝐬 𝐭𝐚𝐬𝐤 𝐢𝐬 𝐧𝐨𝐭 𝐟𝐨𝐫 𝐲𝐨𝐮!", context.bot, update.message)
 
     if dl.status() == MirrorStatus.STATUS_ARCHIVING:
         sendMessage("𝐀𝐫𝐜𝐡𝐢𝐯𝐚𝐥 𝐢𝐧 𝐏𝐫𝐨𝐠𝐫𝐞𝐬𝐬, 𝐘𝐨𝐮 𝐂𝐚𝐧'𝐭 𝐂𝐚𝐧𝐜𝐞𝐥 𝐈𝐭.", context.bot, update.message)
